@@ -69,7 +69,9 @@ router.route('/fields').get(function(req,res){
 router.route('/fields/:field_id')
 
   .get(function(req,res){
-    Field.findById(req.params.field_id, function(err, field){
+    Field.findById(req.params.field_id)
+    .populate('subjects')
+    .exec(function(err, field){
       if(err){
         res.send(error);
       }
@@ -120,7 +122,9 @@ router.route('/subjects').get(function(req, res){
 router.route('/subjects/:subject_id')
 
     .get(function(req, res) {
-        Subject.findById(req.params.subject_id, function(err, subject) {
+        Subject.findById(req.params.subject_id)
+        .populate('field')
+        .exec(function(err, subject) {
             if (err)
                 res.send(err);
             res.json(subject);
