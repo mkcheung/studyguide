@@ -1,0 +1,12 @@
+h1 New Subject
+
+	form(method='post', action='/subjects')
+		fieldset
+			legend Add a Subject
+			div.clearfix
+				label Subject
+					div.input
+						input(name='name', class='xlarge')
+						div.actions
+							input(type='submit', value='Save', class='btn primary')
+							button(type='reset', class='btn') Cancel
