@@ -15,9 +15,6 @@ mongoose.connect('mongodb://localhost/test',
     }
   });
 
-var Subject     = require('./app/models/subject');
-var Field     = require('./app/models/field');
-
 var app = express();
 
 // view engine setup
@@ -34,12 +31,11 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // ROUTES FOR OUR API
 // =============================================================================
-
-var allRoutes = require('./app/routes/routes.js')
-app.use('/api', allRoutes);
-
-
-
-
+var allRoutes = require('./app/routes/routes.js');
+var fieldRoutes = require('./app/routes/fields.js');
+var subjectRoutes = require('./app/routes/subjects.js');
+app.use('/', allRoutes);
+app.use('/api', fieldRoutes);
+app.use('/api', subjectRoutes);
 
 module.exports = app;
