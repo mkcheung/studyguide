@@ -32,10 +32,16 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // ROUTES FOR OUR API
 // =============================================================================
 var allRoutes = require('./app/routes/routes.js');
+var tagsRoutes = require('./app/routes/tags.js');
 var fieldRoutes = require('./app/routes/fields.js');
+var pointRoutes = require('./app/routes/points.js');
 var subjectRoutes = require('./app/routes/subjects.js');
+var topicRoutes = require('./app/routes/topics.js');
 app.use('/', allRoutes);
+app.use('/api', tagsRoutes);
 app.use('/api', fieldRoutes);
+app.use('/api', pointRoutes);
 app.use('/api', subjectRoutes);
+app.use('/api', topicRoutes);
 
 module.exports = app;
