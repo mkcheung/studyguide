@@ -1,9 +1,12 @@
 var express = require('express');
 var path = require('path');
+var bcrypt = require('bcrypt');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var passport = require('passport');
+var flash = require('connect-flash');
 
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/test',
@@ -43,5 +46,9 @@ app.use('/api', fieldRoutes);
 app.use('/api', pointRoutes);
 app.use('/api', subjectRoutes);
 app.use('/api', topicRoutes);
+
+app.set('views', __dirname + '/views');
+app.set('view engine', 'jsx');
+app.engine('jsx', require('express-react-views').createEngine());
 
 module.exports = app;
