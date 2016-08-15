@@ -10,7 +10,7 @@ router.use(function(req, res, next){
 
 router.get('/', function(req, res) {
     // res.json({ message: 'hooray! welcome to our api!' });
-    res.render('index', {});
+    res.render('index', {name: "Study Guide: Map of Logic"});
 });
 
 module.exports = router;
