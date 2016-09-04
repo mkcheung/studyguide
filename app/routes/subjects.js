@@ -9,7 +9,7 @@ router.route('/subjects').get(function(req, res){
     if(err){
       res.send(err);
     }
-    res.json(subjects);
+    res.render('subjectIndex',{allSubjects: subjects});
   });
 })
 .post(function(req, res){
