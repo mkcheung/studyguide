@@ -8,6 +8,7 @@ var IndexComponent = React.createClass({
 					<title>
 					Subjects
 					</title>
+					<link href='//netdna.bootstrapcdn.com/bootstrap/4.0.0-alpha.3/css/bootstrap.min.css' rel='stylesheet'/>
 				</head>
 				<body>
 					<div><span>Subject Name</span> <span>Description</span></div>

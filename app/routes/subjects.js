@@ -20,8 +20,13 @@ router.route('/subjects').get(function(req, res){
     if(err){
       res.send(err);
     }
-    res.json({message: "New Subject Created"});
+    res.redirect(200, "/subjects");
+    // res.json({message: "New Subject Created"});
   });
+});
+
+router.route('/subjects/new').get(function(req, res){
+    res.render('subjectNew');
 });
 
 router.route('/subjects/:subject_id')
