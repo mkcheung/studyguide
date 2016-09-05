@@ -20,7 +20,9 @@ router.route('/subjects').get(function(req, res){
     if(err){
       res.send(err);
     }
-    res.redirect(200, "/subjects");
+    res.location("api/subjects");
+    // And forward to success page
+    res.redirect("/api/subjects");
     // res.json({message: "New Subject Created"});
   });
 });
