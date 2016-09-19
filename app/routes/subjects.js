@@ -4,12 +4,12 @@ var router = express.Router();
 var Subject     = require('../models/subject');
 
 router.route('/subjects').get(function(req, res){
-
   Subject.find(function(err, subjects){
     if(err){
       res.send(err);
     }
-    res.render('subjectIndex',{allSubjects: subjects});
+    res.render('subjectIndex',{flashMessage: req.flash('statusMessage'),
+      allSubjects: subjects});
   });
 })
 .post(function(req, res){
@@ -22,6 +22,7 @@ router.route('/subjects').get(function(req, res){
     }
     res.location("api/subjects");
     // And forward to success page
+    req.flash('statusMessage','New Subject Created.');
     res.redirect("/api/subjects");
     // res.json({message: "New Subject Created"});
   });

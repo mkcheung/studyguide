@@ -4,6 +4,7 @@ var bcrypt = require('bcrypt');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
+var session = require('express-session');
 var bodyParser = require('body-parser');
 var passport = require('passport');
 var flash = require('connect-flash');
@@ -28,9 +29,17 @@ app.set('view engine', 'pug');
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 // app.use(logger('dev'));
+app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-// app.use(cookieParser());
+app.use(cookieParser());
+app.use(session({
+	secret: '11a2b',
+	resave: false,
+  	saveUninitialized: true,
+  	cookie: { maxAge: 60000 }
+  }));
+app.use(flash());
 // app.use(express.static(path.join(__dirname, 'public')));
 
 // ROUTES FOR OUR API
